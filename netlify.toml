@@ -1,0 +1,15 @@
+# Static site — no build step.
+[build]
+  publish = "."
+  command = ""
+
+# Note: real password protection is configured in the Netlify UI
+# (Site configuration → Access & security → Visitor access), not here.
+# The in-page access word in app.js is obfuscation only — see README.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "no-referrer"
