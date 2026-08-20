@@ -118,8 +118,8 @@ HEAD = '''<!DOCTYPE html>
 <link rel="stylesheet" href="styles.css">
 <script>
 // Applied before first paint so no content flashes before the gate.
-(function(){var K='dcg-briefs-ok',H=1358338935;try{if(sessionStorage.getItem(K)===String(H))return;}catch(e){}
-document.documentElement.className+=' gated';})();
+(function(){{var K='dcg-briefs-ok',H=1358338935;try{{if(sessionStorage.getItem(K)===String(H))return;}}catch(e){{}}
+document.documentElement.className+=' gated';}})();
 </script>
 </head>
 <body>
