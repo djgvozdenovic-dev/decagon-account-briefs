@@ -47,6 +47,25 @@
     apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   });
 
+
+  // ---- Mobile drawer nav ----
+  var root = document.documentElement,
+      navBtn = document.getElementById('navBtn'),
+      scrim = document.getElementById('navScrim');
+  function setNav(open) {
+    root.classList.toggle('nav-open', open);
+    if (navBtn) navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  if (navBtn) navBtn.addEventListener('click', function () { setNav(!root.classList.contains('nav-open')); });
+  if (scrim) scrim.addEventListener('click', function () { setNav(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setNav(false); });
+  // close the drawer after tapping any nav link
+  Array.prototype.forEach.call(document.querySelectorAll('aside a'), function (a) {
+    a.addEventListener('click', function () { setNav(false); });
+  });
+  // reset when resizing back to desktop
+  window.addEventListener('resize', function () { if (window.innerWidth > 860) setNav(false); });
+
   // ---- Accordions: bulk toggle, deep-link, jump-link auto-open ----
   var accs = function () { return document.querySelectorAll('details.acc'); };
   document.getElementById('expAll').addEventListener('click', function () {
